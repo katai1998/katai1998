@@ -1,0 +1,72 @@
+class Book:
+    def __init__(self, Bookid, Title, Author, Price, Review, Stars):
+        self.Bookid = Bookid
+        self.Title = Title
+        self.Author = Author
+        self.Price = Price
+        self.Review = Review
+        self.Stars = Stars
+
+
+def price_update(b_id, price):
+    for book in book_list:
+        if book.Bookid == b_id:
+            book.Price = price
+            break
+    print("Book Details are updated successfully")
+
+
+def delete_book(b_id):
+    for i, book in enumerate(book_list):
+        if book.Bookid == b_id:
+            del book_list[i]
+            break
+    print("Book is Deleted")
+
+
+def fetch_books():
+    for book in book_list:
+        print("Book ID - ", book.Bookid)
+        print("Book Title - ", book.Title)
+        print("Book Auhtor - ", book.Author)
+        print("Book Price - ", book.Price)
+        print("Book Review - ", book.Review)
+        print("Book Stars - ", book.Stars)
+    if book_list == []:
+        print("No Books exists")
+
+
+book_list = []
+
+print("Enter 1 to Add a Book")
+print("Enter 2 to update the price of a Book")
+print("Enter 3 to Delete a book")
+print("Enter 4 to Fetch all the books")
+while(True):
+    inp = int(input())
+
+    if inp == 1:
+        b_id = int(input())
+        title = input()
+        author = input()
+        price = float(input())
+        review = input()
+        stars = int(input())
+        temp = Book(b_id, title, author, price, review, stars)
+        book_list.append(temp)
+        print("Book Details are added successfully")
+
+    elif inp == 2:
+
+        price = float(input())
+        b_id = int(input())
+        price_update(b_id, price)
+
+
+    elif inp == 3:
+
+        b_id = int(input())
+        delete_book(b_id)
+
+    elif inp == 4:
+        fetch_books()
